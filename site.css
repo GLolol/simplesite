@@ -1,0 +1,44 @@
+/* Example CSS to format the navbar. You can edit this to your liking or replace it
+ * with that of your own or a CSS framework.
+ */
+
+.nav ul, .nav ol {
+    /* Cancel out the default list margin/padding */
+    margin: 0;
+    padding: 0;
+}
+.nav li {
+    display: inline; /* disable bullet points */
+    white-space: nowrap;
+}
+.nav a {
+    background: #111;
+    padding: 4px;
+    color: #EEE;
+    border-radius:9px;
+}
+.nav a:hover,
+.nav a:focus {
+    color: #EEEE88;
+}
+li.nav-active > a {
+    background: #11A;
+}
+
+/* Demo site example CSS */
+html, body {
+    width: 98%;
+    text-align: center;
+    padding-left: 1%;
+    padding-right: 1%;
+    font-family: sans-serif;
+}
+table {
+    margin: 0 auto;  /* Centre the table in page 2 */
+}
+
+img {
+    height: auto;
+    width: auto;
+    max-width: 500px;
+}
