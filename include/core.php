@@ -3,7 +3,9 @@ $rootdir = realpath(__DIR__);
 include ($rootdir . '/config.php');
 include ($rootdir . '/version.php');
 
-/* Returns whether the given string starts with the given substring. */
+/* Helper used by some subsites:
+ * Returns whether the given string starts with the given substring.
+ */
 function startswith($string, $substring) {
     return strncmp($string, $substring, strlen($substring)) === 0;
 }
@@ -23,11 +25,12 @@ $addr = $_SERVER['REQUEST_URI'];
 <ul>
 <?php
     foreach ($knownPages as $page => $title) {
-        if ($addr == $page) {
-            echo '<li class="nav-active"><a href="">' . $title . "</a></li>\n";
-        } elseif (!in_array($page, $hiddenPages)) {
-            // Don't show hidden pages in the navbar, unless we're on it already.
-            echo '<li><a href="' . $page . '">' . $title . "</a></li>\n";
+        if (!in_array($page, $hiddenPages)) {
+            if ($addr == $page) {
+                echo '<li class="nav-active"><a href="">' . $title . "</a></li>\n";
+            } else {
+                echo '<li><a href="' . $page . '">' . $title . "</a></li>\n";
+            }
         }
     }
 ?>
@@ -52,11 +55,12 @@ $addr = $_SERVER['REQUEST_URI'];
                 <?php
                     // Mark the page as active if the address matches, and format the pages accordingly.
                     foreach ($knownPages as $page => $title) {
-                        if ($addr == $page) {
-                            echo '<li class="active"><a href="">' . $title . '</a></li>';
-                        // Don't show hidden pages in the navbar, unless we're on it already.
-                        } elseif (!in_array($page, $hiddenPages)) {
-                            echo '<li><a href="' . $page . '">' . $title . '</a></li>';
+                        if (!in_array($page, $hiddenPages)) {
+                            if ($addr == $page) {
+                                echo '<li class="active"><a href="">' . $title . '</a></li>';
+                            } else {
+                                echo '<li><a href="' . $page . '">' . $title . '</a></li>';
+                            }
                         }
                     }
                     ?>
